@@ -462,4 +462,4 @@ class BallView extends Croquet.View {
 Croquet.startSession("MazeWarz", MyModel, MyView);
 
 Croquet.App.messages = true;
-CroquetApp.makeWidgetDock();
+CroquetApp.makeWidgetDock({badge: true, qrcode: true});

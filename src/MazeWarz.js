@@ -432,6 +432,14 @@ class MyView extends Croquet.View {
     update(time) {
         this.sceneRender();
     }
+
+    showStatus(backlog, starvation, min, max) {
+      const color = backlog > starvation ? '255,0,0' : '255,255,255';
+      const value = Math.max(backlog, starvation) - min;
+      const size = Math.min(value, max) * 100 / max;
+      const alpha = size / 100;
+      this.element.style.boxShadow = alpha < 0.2 ? "" : `inset 0 0 ${size}px rgba(${color},${alpha})`;
+    }
 }
 
 class BallView extends Croquet.View {
@@ -451,4 +459,7 @@ class BallView extends Croquet.View {
     }
 }
 
-Croquet.startSession("MazeWars", MyModel, MyView);
+Croquet.startSession("MazeWarz", MyModel, MyView);
+
+Croquet.App.messages = true;
+CroquetApp.makeWidgetDock();
